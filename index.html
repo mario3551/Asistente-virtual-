@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Buscador de temas de filosofía</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Bienvenidos al buscador de temas de filosofía</h1>
-    <p>Este buscador te ayudará a encontrar información sobre diversos temas de filosofía. Ingresa tus consultas de búsqueda a continuación:</p>
-    <form>
-      <label for="query">Consulta:</label>
-      <input type="text" id="query" name="query" placeholder="Ingresa tu consulta de búsqueda aquí">
-      <button type="submit">Buscar</button>
+<head>
+    <meta charset="utf-8">
+    <title>Búsqueda filosófica en Wikipedia</title>
+</head>
+<body>
+    <h1>Búsqueda filosófica en Wikipedia</h1>
+    <form method="POST">
+        <label for="query">Ingrese la consulta de búsqueda filosófica:</label>
+        <input type="text" name="query" id="query">
+        <button type="submit">Buscar</button>
     </form>
-  </body>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    {% if links %}
+        <ul>
+            {% for link in links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
 </html>
